@@ -28,10 +28,11 @@ export const appRoutes: Routes = [
   {
     path: '',
     component: AppLayoutComponent,
+    canActivate: [AuthGuardEcm],
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: LoginComponent
       },
       {
         path: 'home',
@@ -48,4 +49,5 @@ export const appRoutes: Routes = [
     path: 'login',
     component: LoginComponent
   }
+  
 ];
