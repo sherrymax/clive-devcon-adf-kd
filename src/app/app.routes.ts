@@ -22,6 +22,7 @@ import { LoginComponent } from './login/login.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 import { FileViewComponent } from './file-view/file-view.component';
+import
 
 export const appRoutes: Routes = [
   { path: 'files/:nodeId/view', component: FileViewComponent, canActivate: [AuthGuardEcm], outlet: 'overlay' },
@@ -40,6 +41,11 @@ export const appRoutes: Routes = [
       {
         path: 'documents',
         component: DocumentsComponent,
+        canActivate: [AuthGuardEcm]
+      },
+      {
+        path: 'chat',
+        component: ChatKDComponent,
         canActivate: [AuthGuardEcm]
       }
     ]
