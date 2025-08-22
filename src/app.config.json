@@ -64,5 +64,8 @@
       "label": "Simplified Chinese"
     }
   ],
-  "logLevel": "trace"
+  "logLevel": "trace",
+  "alfresco-with-kd-hostname": "http://54.81.2.222",
+  "alfresco-username": "demo",
+  "alfresco-password": "demo"
 }
