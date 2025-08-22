@@ -17,6 +17,9 @@ import { LoginComponent } from './login/login.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { AppLayoutComponent } from './app-layout/app-layout.component';
 
+import { ChatKDComponent } from './knowledge-discovery/chat-kd/chat-kd.component';
+import { AgentSelectorComponent } from './knowledge-discovery/agent-selector/agent-selector.component';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -35,7 +38,9 @@ import { AppLayoutComponent } from './app-layout/app-layout.component';
         LoginComponent,
         DocumentsComponent,
         AppLayoutComponent,
-        FileViewComponent
+        FileViewComponent,
+        ChatKDComponent,
+        AgentSelectorComponent
     ],
     providers: [
         PreviewService,
