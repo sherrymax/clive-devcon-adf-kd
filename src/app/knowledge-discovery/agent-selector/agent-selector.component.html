@@ -1,1 +1,81 @@
-<p>agent-selector works!</p>
+<div class="agent-selector-container">
+
+  <div class="agent-selector-main-content">
+
+    <button class="ai-button" (click)="openPopup()">
+      <span class="ai-icon">✨</span>
+      Knowledge Discovery Agent
+      <div class="sparkles">
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+        <div class="sparkle"></div>
+      </div>
+    </button>
+
+    <div *ngIf="selectedAgent" class="selected-agent-info">
+      <h2>Selected Agent: {{ selectedAgent }}</h2>
+    </div>
+  </div>
+
+  <!-- Popup Modal -->
+  <div *ngIf="showPopup" class="popup-overlay" (click)="closePopup()">
+    <div class="popup-container" (click)="$event.stopPropagation()">
+      <div class="popup-header">
+        <h2>Select Knowledge Discovery Agent</h2>
+        <button class="close-btn" (click)="closePopup()">&times;</button>
+      </div>
+
+      <div class="popup-content">
+        <!-- Left Section - Agents List -->
+        <div class="left-section">
+          <h3>Agents</h3>
+          <div class="agents-list">
+            <div *ngFor="let agent of agents" class="agent-option">
+              <label class="radio-label">
+                <input type="radio" [value]="agent.id" [(ngModel)]="tempSelectedAgentID" name="agentSelection">
+                {{ agent.name }}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Section - Agent Details -->
+        <div *ngIf="tempSelectedAgentID; else noSelection" class="right-section">
+          <h3>Agent Details</h3>
+          <div *ngIf="tempSelectedAgentID; else noSelection" class="agent-details">
+            <div class="detail-item">
+              <strong>ID:</strong> {{ getSelectedAgentData()?.id }}
+            </div>
+            <div class="detail-item">
+              <strong>Name:</strong> {{ getSelectedAgentData()?.name }}
+            </div>
+            <div class="detail-item">
+              <strong>Description:</strong> {{ getSelectedAgentData()?.description }}
+            </div>
+            <div class="detail-item">
+              <strong>Type:</strong> {{ getSelectedAgentData()?.type }}
+            </div>
+            <div class="detail-item">
+              <strong>Status:</strong> {{ getSelectedAgentData()?.status }}
+            </div>
+            <div class="detail-item">
+              <strong>Created On:</strong> {{ getSelectedAgentData()?.createdAt }}
+            </div>
+          </div>
+          <ng-template #noSelection>
+            <p class="no-selection">Please select a agent to view details</p>
+          </ng-template>
+        </div>
+      </div>
+
+      <div class="popup-footer">
+        <button class="select-btn" [disabled]="!tempSelectedAgentID" (click)="confirmSelection()">
+          Select
+        </button>
+        <button class="cancel-btn" (click)="closePopup()">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
